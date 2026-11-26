@@ -75,7 +75,7 @@ Simulasi mengurangi stok sementara (hanya di memori, tidak mengubah berkas CSV).
 ├── CODING MENU 1-2.py   # Menu 1 (Data Persediaan) dan Menu 2 (Analisis Stok)
 ├── CODING MENU 3-4.py   # Menu 3 (Rekomendasi Pemesanan) dan Menu 4 (Simulasi Pembelian)
 ├── CODING MENU 5-6.py   # Menu 5 (Laporan dan Riwayat) dan Menu 6 (Cari Barang)
-├── stok_item.csv        # Data persediaan barang
+├── stok_item.csv        # Dataset persediaan barang
 └── README.md            # Dokumentasi
 ```
 
@@ -92,8 +92,6 @@ Simulasi mengurangi stok sementara (hanya di memori, tidak mengubah berkas CSV).
    git clone https://github.com/muhammadrakhachandra7-wq/Analisis-Persediaan-dan-Penentuan-Pemesanan-Ulang-Barang-Gudang-untuk-Mendukung-Distribusi-Logistik.git
    cd Analisis-Persediaan-dan-Penentuan-Pemesanan-Ulang-Barang-Gudang-untuk-Mendukung-Distribusi-Logistik
    ```
-
-   > Sesuaikan alamat di atas dengan URL repositori yang tampil di tombol **Code** pada GitHub.
 
 2. Jalankan salah satu berkas program:
 
@@ -153,10 +151,9 @@ id,warehouse_id,sku,product_name,opening_on_hand,counted_at,reorder_point,reorde
 
 ## Tim Pengembang
 
-**Kelompok [...]**
-
 | No | Nama | NIM |
 |----|------|-----|
-| 1 | [Nama] | [NIM] |
-| 2 | [Nama] | [NIM] |
-| 3 | [Nama] | [NIM] |
+| 1 | Muhammad Rakha Chandra | 2610932016 |
+| 2 | Adib Fawwaz Ramadhan | 2610932044 |
+| 3 | Dzaky Rinanda Pratama | 2610933006 |
+| 4 | Sayyid Bayhaqi Dinata | 2610933002 |
