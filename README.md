@@ -29,19 +29,20 @@ Kelancaran distribusi logistik sangat bergantung pada ketersediaan barang di gud
 - Menampilkan data persediaan barang gudang beserta statusnya.
 - Menentukan barang yang perlu dipesan ulang berdasarkan batas pemesanan (*reorder point*).
 - Memberikan rekomendasi jumlah pesanan dan lead time untuk tiap barang.
-- Mensimulasikan pembelian barang beserta pembaruan stok sementara.
+- Mensimulasikan pembelian barang beserta pembaruan stok dan status secara langsung.
 - Menyajikan laporan persediaan dan riwayat pembelian.
 
 ## Fitur Utama
 
-| No | Fitur | Keterangan |
-|----|-------|------------|
+| Menu | Fitur | Keterangan |
+|------|-------|------------|
 | 1 | Data Persediaan | Menampilkan SKU, nama barang, gudang, stok, batas pemesanan, dan status. |
 | 2 | Analisis Stok | Ringkasan jumlah barang, stok aman, barang perlu dipesan, dan total stok. |
 | 3 | Rekomendasi Pemesanan | Daftar barang yang perlu dipesan beserta jumlah pesan dan lead time. |
 | 4 | Simulasi Pembelian Barang | Simulasi pembelian dengan validasi stok, jumlah, tanggal, alamat, dan metode pengiriman (darat, laut, udara). |
-| 5 | Laporan dan Riwayat | Laporan persediaan, stok sementara setelah simulasi, dan riwayat pembelian. |
+| 5 | Laporan dan Riwayat | Laporan persediaan, stok setelah simulasi, dan riwayat pembelian. |
 | 6 | Cari Barang | Pencarian berdasarkan SKU atau nama barang. |
+| 0 | Keluar | Mengakhiri program. |
 
 Program dilindungi *login* sederhana sebelum menu utama ditampilkan.
 
@@ -49,16 +50,16 @@ Program dilindungi *login* sederhana sebelum menu utama ditampilkan.
 
 ### Penentuan Status Barang
 
-Status setiap barang ditentukan dengan membandingkan stok saat ini dengan batas pemesanan ulang.
+Status setiap barang ditentukan dengan membandingkan **stok saat ini** dengan batas pemesanan ulang. Stok saat ini awalnya sama dengan `opening_on_hand` pada CSV, lalu berkurang setiap kali simulasi pembelian dilakukan, sehingga status ikut diperbarui.
 
 | Kondisi | Status |
 |---------|--------|
-| `opening_on_hand` ≤ `reorder_point` | **Perlu pesan** |
-| `opening_on_hand` > `reorder_point` | **Aman** |
+| stok saat ini ≤ `reorder_point` | **Perlu pesan** |
+| stok saat ini > `reorder_point` | **Aman** |
 
 ### Simulasi Pembelian
 
-Simulasi mengurangi stok sementara (hanya di memori, tidak mengubah berkas CSV). Pembelian ditolak apabila:
+Simulasi mengurangi stok sementara (hanya di memori, tidak mengubah berkas CSV) dan menampilkan status stok setelah pembelian. Pembelian ditolak apabila:
 
 - SKU tidak ditemukan,
 - stok barang sudah habis,
@@ -72,6 +73,7 @@ Simulasi mengurangi stok sementara (hanya di memori, tidak mengubah berkas CSV).
 
 ```
 .
+├── CODING MENU 0.py     # Menu 0 (Keluar)
 ├── CODING MENU 1-2.py   # Menu 1 (Data Persediaan) dan Menu 2 (Analisis Stok)
 ├── CODING MENU 3-4.py   # Menu 3 (Rekomendasi Pemesanan) dan Menu 4 (Simulasi Pembelian)
 ├── CODING MENU 5-6.py   # Menu 5 (Laporan dan Riwayat) dan Menu 6 (Cari Barang)
@@ -114,6 +116,7 @@ Setiap berkas program menampilkan menu sesuai pasangannya:
 
 | Berkas | Menu yang tersedia |
 |--------|--------------------|
+| `CODING MENU 0.py` | 0. Keluar |
 | `CODING MENU 1-2.py` | 1. Data Persediaan, 2. Analisis Stok |
 | `CODING MENU 3-4.py` | 3. Rekomendasi Pemesanan, 4. Simulasi Pembelian Barang |
 | `CODING MENU 5-6.py` | 5. Laporan dan Riwayat, 6. Cari Barang |
@@ -143,17 +146,4 @@ id,warehouse_id,sku,product_name,opening_on_hand,counted_at,reorder_point,reorde
 
 ## Keterbatasan
 
-- Data disimpan dalam berkas CSV sehingga belum sesuai untuk penggunaan skala besar atau serentak oleh banyak pengguna.
-- *Username* dan *password* ditulis langsung di dalam kode dan belum dienkripsi. Program ini ditujukan untuk pembelajaran.
-- Hasil simulasi pembelian hanya tersimpan selama program berjalan dan tidak mengubah `stok_item.csv`.
-- Karena program dipisah menjadi tiga berkas, riwayat pembelian pada `CODING MENU 5-6.py` tidak memuat transaksi dari `CODING MENU 3-4.py`.
-- Penentuan pemesanan hanya memakai batas pemesanan ulang dan belum mempertimbangkan pola permintaan.
-
-## Tim Pengembang
-
-| No | Nama | NIM |
-|----|------|-----|
-| 1 | Muhammad Rakha Chandra | 2610932016 |
-| 2 | Adib Fawwaz Ramadhan | 2610932044 |
-| 3 | Dzaky Rinanda Pratama | 2610933006 |
-| 4 | Sayyid Bayhaqi Dinata | 2610933002 |
+- Data disimpan dal
